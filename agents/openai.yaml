@@ -1,0 +1,4 @@
+interface:
+  display_name: "Give My Repo Back!"
+  short_description: "Regain repository ownership through guided human work"
+  default_prompt: "Use $give-my-repo-back-skill and help me choose how to start taking ownership of this repository."
