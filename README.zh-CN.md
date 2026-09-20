@@ -23,6 +23,7 @@ Skill ID：`give-my-repo-back-skill`
 - 基于你实际做过的工作进行的面试演练。
 - 没有准备好具体需求时，由 agent 主动提供的开始菜单。
 - 从运行项目、追踪路径到完成一次可观察修改的零基础路线。
+- 在绘制系统切片有助于理解时，由人亲手完成、以证据支撑的运行时流程图。
 - 每张活动任务卡提供粗略投入估计和一个明确的前五分钟动作。
 
 **生成的学习文档使用你的语言。** 用简体中文提出需求，agent 就应当用简体中文编写文档标题、正文、表格、提示和验收反馈。代码标识符、路径与机器可读字段名保留原样。
@@ -72,7 +73,8 @@ your-project/
     ├── LICENSE
     └── references/
         ├── artifacts.md
-        └── coaching-and-review.md
+        ├── coaching-and-review.md
+        └── system-map.md
 ```
 
 不同 harness 的技能目录和激活规则可能不同，请按对应工具的文档安装。按工具要求重新加载技能或开启新会话。
@@ -131,7 +133,7 @@ your-project/
 
 代码能运行只是验收的一部分。你还需要讲明白这张卡要教会你的内容。如果你要求 AI 代写，它会记录帮助范围，并建议安排后续练习来补齐理解。
 
-如果你对仓库几乎一无所知，最初几张卡应带你运行一项已有检查、找到入口、追踪一条路径、画出小型系统图，再完成一个风险较低且能观察结果的修改。开始之前不要求你先想出功能需求。
+如果你对仓库几乎一无所知，最初几张卡应带你运行一项已有检查、找到入口、追踪一条路径、画出小型系统图，再完成一个风险较低且能观察结果的修改。系统图默认采用“带编号的运行时流程图 + 证据索引”：先由你画预测稿，再根据仓库证据修订，最后用自己的话讲解。Mermaid 很方便，但不是必需。开始之前不要求你先想出功能需求。
 
 可以查看[完整中文任务卡示例](examples/atomic-task-card.zh-CN.md)或[英文版本](examples/atomic-task-card.md)。示例使用虚构仓库展示格式；实际任务卡必须引用你的项目。
 
@@ -145,11 +147,15 @@ docs/repo-ownership/
 ├── requirements.md
 ├── roadmap.md
 ├── ledger.md
+├── maps/
+│   └── GMRB-002-create-task.md
 └── cards/
     └── GMRB-001.md
 ```
 
 这些普通 Markdown 文件记录会话之间的进度，也方便换一个 harness 继续。让新 agent 加载 skill 并从这个目录续接即可。它应核对仓库变化、保留已有卡片编号和人的笔记，从记录的下一步继续。只讨论、不保存文件的场景，也可以把材料留在对话中。
+
+`maps/` 是可选目录，只在系统图任务适合保存持久产物时创建。小型学习会话不需要它。
 
 ## Harness 兼容性
 
@@ -175,7 +181,7 @@ python /absolute/path/to/give-my-repo-back-skill/scripts/validate_project.py
 | 路径 | 用途 |
 | --- | --- |
 | [SKILL.md](SKILL.md) | 可移植的 agent 指令和工作流程 |
-| [references/](references/) | 产物模板、辅导与验收协议 |
+| [references/](references/) | 产物模板、人类系统图协议、辅导与验收协议 |
 | [examples/](examples/) | 中英文任务卡示例 |
 | [scripts/validate_project.py](scripts/validate_project.py) | CI 使用的本地链接与双语 README 检查 |
 | [agents/openai.yaml](agents/openai.yaml) | 可选的 Codex 展示元数据 |

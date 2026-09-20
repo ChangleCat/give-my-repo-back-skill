@@ -23,6 +23,7 @@ Skill ID: `give-my-repo-back-skill`
 - Interview practice based on work you actually performed.
 - A proactive start menu when you load the skill without a prepared requirement.
 - A zero-knowledge route from running the project to tracing and changing one observable path.
+- Human-made, evidence-backed runtime flow maps for learning bounded system slices.
 - A rough effort estimate and a concrete first-five-minutes action on each active card.
 
 All generated learning documents follow your language. Ask in Simplified Chinese and the agent writes Chinese titles, instructions, tables, hints, and review feedback. Code identifiers, paths, and machine-readable keys stay intact.
@@ -72,7 +73,8 @@ your-project/
     ├── LICENSE
     └── references/
         ├── artifacts.md
-        └── coaching-and-review.md
+        ├── coaching-and-review.md
+        └── system-map.md
 ```
 
 Other harnesses may use different directories or activation rules. Follow their documentation instead of assuming one path works everywhere. Reload skills or start a new session as required by your harness.
@@ -132,7 +134,7 @@ If you load the skill without a detailed request, the agent should proactively o
 
 A working change alone does not close a card. You also need to explain the part it teaches. When the agent supplies implementation at your request, it records that assistance and proposes a recovery exercise.
 
-If you start with little or no repository knowledge, the first cards should help you run one documented check, locate an entry point, trace one path, draw a small system map, and make a low-risk observable change. You do not need to choose a feature before you can begin.
+If you start with little or no repository knowledge, the first cards should help you run one documented check, locate an entry point, trace one path, draw a small system map, and make a low-risk observable change. The default map is a numbered runtime flow plus an evidence index: you draw the prediction, revise it from repository evidence, and explain it back. Mermaid is convenient but not required. You do not need to choose a feature before you can begin.
 
 See a [complete example card](examples/atomic-task-card.md) or its [Simplified Chinese version](examples/atomic-task-card.zh-CN.md). These use a fictional repository to show the format; real cards must cite your repository.
 
@@ -146,11 +148,15 @@ docs/repo-ownership/
 ├── requirements.md
 ├── roadmap.md
 ├── ledger.md
+├── maps/
+│   └── GMRB-002-create-task.md
 └── cards/
     └── GMRB-001.md
 ```
 
 These ordinary Markdown files carry progress between sessions and harnesses. Ask a new agent to load the skill and resume from this directory. It should check repository changes, reuse existing IDs and notes, and continue from the recorded next action. Discussion-only sessions can keep artifacts in the conversation.
+
+The optional `maps/` directory is created only when a system-map card benefits from a persistent artifact. A small session does not need it.
 
 ## Harness compatibility
 
@@ -176,7 +182,7 @@ The second command checks local Markdown links and verifies that the English and
 | Path | Purpose |
 | --- | --- |
 | [SKILL.md](SKILL.md) | Portable agent instructions and workflow |
-| [references/](references/) | Artifact templates and coaching/review protocol |
+| [references/](references/) | Artifact templates, human-made system-map protocol, and coaching/review protocol |
 | [examples/](examples/) | English and Chinese example task cards |
 | [scripts/validate_project.py](scripts/validate_project.py) | Local link and bilingual README checks used by CI |
 | [agents/openai.yaml](agents/openai.yaml) | Optional Codex display metadata |

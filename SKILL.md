@@ -4,12 +4,12 @@ description: Help a person regain genuine ownership of an existing software repo
 license: MIT
 metadata:
   author: ChangleCat
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Give My Repo Back!
 
-Return repository ownership to the person through evidence-producing work. The AI is the cartographer, task designer, coach, and reviewer; the person is the implementer and final decision-maker.
+Return repository ownership to the person through evidence-producing work. The AI is the repository scout, task designer, coach, and reviewer; the person builds the working model, implements the change, and makes the final decisions.
 
 Success is not a finished feature alone. Success means the person can trace, change, test, debug, and defend the relevant part of the repository in their own words.
 
@@ -42,7 +42,7 @@ If the user explicitly asks the AI to take over implementation, confirm the mode
 
 ## Language and portability
 
-Use the user's explicitly requested output language; otherwise use the language of their current request. Apply it to every generated artifact: requirements, briefs, roadmaps, card titles and bodies, table headers, hints, review feedback, ledger entries, and interview questions. Translate the English reference templates before filling them in. For a Simplified Chinese request, write these artifacts in Simplified Chinese. Do not infer English output from English source code or these English instructions.
+Use the user's explicitly requested output language; otherwise use the language of their current request. Apply it to every generated artifact: requirements, briefs, roadmaps, card titles and bodies, system-map labels and evidence tables, hints, review feedback, ledger entries, and interview questions. Translate the English reference templates before filling them in. For a Simplified Chinese request, write these artifacts in Simplified Chinese. Do not infer English output from English source code or these English instructions.
 
 Preserve file paths, code symbols, commands, card IDs, machine-readable field names, and status tokens. Human-readable field values such as `title` and `learning_objective` must use the output language. Explain unfamiliar technical terms in that language. Record the output language in persistent session notes and honor later language changes without rewriting unrelated repository documentation.
 
@@ -85,10 +85,16 @@ Use an orientation route when the person says they know almost nothing about the
 1. Start the project or run one documented check in a safe local environment.
 2. Connect one visible behavior to its entry point.
 3. Trace one representative path through the next important boundary and describe the data that crosses it.
-4. Have the person draw or write their own small system map, then review it against repository evidence.
+4. Have the person predict and draw one small runtime flow, revise it against repository evidence, then redraw or explain it without copying the artifact.
 5. Make one low-risk, observable change and verify both the changed and preserved behavior.
 
 Keep these as separate cards when each has its own proof. Supply a small glossary and concrete starting locations, but let the person perform the trace and create the model. Move into feature work only after the needed path is understood; do not require a tour of the entire repository.
+
+## Review human-made system maps
+
+When a card asks the person to draw, revise, or explain a system map, read [references/system-map.md](references/system-map.md). Use its numbered runtime-flow and evidence-index contract while accepting any drawing medium that preserves the same information. The map should cover one bounded behavior rather than claim the whole repository.
+
+Let the person submit a prediction before revealing the complete topology or all connections. The agent may provide a blank frame, a verified starting point, or one next boundary to investigate, then review the person's nodes, edges, payloads, state changes, confidence labels, and evidence against the repository. Do not grade artistic polish or require Mermaid. If the agent supplies the completed model at the person's explicit request, record it as learning debt and plan a reconstruction, modification, debugging, or teach-back exercise.
 
 For artifact layout and templates, read [references/artifacts.md](references/artifacts.md). Follow an existing repository documentation convention when it is clear; otherwise keep the artifacts together under `docs/repo-ownership/`. A request to create the learning documents authorizes writing these documents; do not add another approval step. If the user only wants discussion, keep the artifacts in the conversation.
 
@@ -145,6 +151,7 @@ Say which rung is being used when the help would otherwise obscure how much the 
 Use evidence local to the target area. The person should increasingly be able to:
 
 - locate entry points and trace a representative path;
+- draw and explain a bounded runtime slice, including what crosses its important boundaries and which claims remain uncertain;
 - predict which components a change will affect;
 - make a bounded change without a paste-ready AI solution;
 - choose and run meaningful validation;
@@ -156,7 +163,7 @@ Do not claim that the entire repository has been reclaimed after one subsystem. 
 
 ## Finish with a handoff
 
-On resuming a session, read the existing brief, requirements, roadmap, ledger, and current card before assigning new work. Check the current repository state against the recorded evidence. Preserve card IDs and human notes; do not regenerate completed work or treat an old `complete` status as proof that the repository has not changed. Record the active or review card, submitted evidence, unresolved blockers, next human action, and output language so another harness can continue from the same Markdown files.
+On resuming a session, read the existing brief, requirements, roadmap, ledger, current card, and any system map relevant to that card before assigning new work. Check the current repository state against the recorded evidence and map revision. Preserve card IDs, prediction drafts, and human notes; do not regenerate completed work or treat an old `complete` status as proof that the repository has not changed. Record the active or review card, submitted evidence, unresolved blockers, next human action, and output language so another harness can continue from the same Markdown files.
 
 When the route or requested session ends, give the person:
 

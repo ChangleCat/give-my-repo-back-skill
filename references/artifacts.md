@@ -10,6 +10,8 @@ docs/repo-ownership/
 ├── requirements.md
 ├── roadmap.md
 ├── ledger.md
+├── maps/
+│   └── GMRB-002-create-task.md
 └── cards/
     ├── GMRB-001.md
     └── GMRB-002.md
@@ -27,12 +29,19 @@ Keep it accurate enough to navigate and small enough to maintain.
 ## Target and motivation
 <What the person wants to own and why>
 
+## Repository snapshot
+- Revision:
+- Working tree state:
+- Evidence checked at:
+
 ## Verified working model
 - Entry points:
 - Representative control flow:
+- Representative data or event flow:
 - Important data and state:
 - External boundaries:
 - Validation path:
+- Human-made system map, when used:
 
 ## Design decisions visible in the repository
 | Decision | Evidence | Likely rationale | Confidence |
@@ -50,6 +59,8 @@ Keep it accurate enough to navigate and small enough to maintain.
 ```
 
 Use direct file and symbol references for important evidence. Do not write speculative history as fact.
+
+When a task card uses a system map, read [system-map.md](system-map.md). Save a persistent map under `docs/repo-ownership/maps/` only when it helps the current route; do not create the directory or empty map files for ceremony. Prefer a filename that connects the map to its originating card and behavior, such as `GMRB-002-create-task.md`. Preserve the person's prediction and revision history rather than replacing it with a polished agent-authored artifact.
 
 ## Requirements
 
@@ -156,7 +167,7 @@ In your own words:
 - Regression signal:
 
 ## Evidence to bring back
-- <diff, command output, trace, diagram, or explanation>
+- <diff, command output, trace, human-made map with its evidence index, or explanation>
 
 ## Understanding gate
 Be ready to explain:
