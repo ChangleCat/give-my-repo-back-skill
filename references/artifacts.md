@@ -162,12 +162,21 @@ In your own words:
 - <Relevant repository or design invariant>
 
 ## Validation
-- Automated:
-- Manual or observational:
-- Regression signal:
+Record every check as `pass`, `fail`, or `not_run`.
+
+| Check | What it proves | Result | Limits |
+| --- | --- | --- | --- |
+| Automated | | `not_run` | |
+| Manual or observational | | `not_run` | |
+| Regression signal | | `not_run` | |
+
+A `not_run` result does not prove code correctness. Recording why a check could not run keeps the limitation visible but does not turn the result into `pass`.
 
 ## Evidence to bring back
-- <diff, command output, trace, human-made map with its evidence index, or explanation>
+- Repository revision or other stable artifact identity:
+- Relevant working-tree state:
+- Applicable behavior, path, or subsystem:
+- <Diff, command output, trace, human-made map with its evidence index, or explanation>
 
 ## Understanding gate
 Be ready to explain:
@@ -203,8 +212,8 @@ Record demonstrated evidence, not impressions.
 # Ownership ledger
 
 ## Demonstrated
-| Capability | Evidence | Assistance level | Scope |
-| --- | --- | --- | --- |
+| Capability | Evidence | Repository revision | Validity | Assistance level | Applicable scope |
+| --- | --- | --- | --- | --- | --- |
 
 ## Learning debt
 | Concept or change | What AI supplied | Recovery card |
@@ -219,9 +228,12 @@ Record demonstrated evidence, not impressions.
 ## Session handoff
 - Output language:
 - Current card and state:
-- Last reviewed evidence and repository revision, if available:
+- Last reviewed evidence, repository revision, relevant working-tree state, and applicable scope:
+- Evidence marked `needs_recheck` and the material change that affected it:
 - Unverified claims or blockers:
 - Next human action:
 ```
 
 Use assistance descriptions such as `independent`, `directional hint`, `diagnostic coaching`, `pseudocode`, or `AI implementation`. Do not turn them into a grade or an artificial percentage.
+
+Use `current` when an evidence record still matches the repository inputs and `needs_recheck` when a material change affects the behavior, path, contract, configuration, test, or other input it relied on. Preserve the old row and its original result; add later evidence as a new row after rechecking. Do not mark unrelated evidence `needs_recheck` merely because the repository changed elsewhere.

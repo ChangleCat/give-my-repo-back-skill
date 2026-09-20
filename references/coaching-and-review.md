@@ -50,6 +50,7 @@ Inspect the actual diff and relevant checks. Review at least:
 - regression risk and meaningful test coverage;
 - accidental scope growth or unrelated edits;
 - whether the collected evidence supports the claim.
+- the repository revision or stable artifact identity, relevant working-tree state, and exact scope to which the evidence applies.
 
 Do not rewrite the solution merely because another style is possible. When correction is needed, identify the violated behavior or invariant and let the person repair it when safe.
 
@@ -87,12 +88,14 @@ Ask follow-ups when an answer is memorized but does not connect to repository ev
 Mark a card `complete` only when:
 
 1. The observable outcome exists.
-2. Relevant validation passes, or an explicitly documented limitation explains why it cannot run.
+2. Every check required to establish code correctness passes. Record each check as `pass`, `fail`, or `not_run`; a documented limitation does not turn `not_run` into evidence that the code is correct.
 3. The person can explain the target flow and decision in their own words.
 4. They can name at least one realistic failure mode, tradeoff, or alternative.
 5. The assistance level is recorded honestly.
 
-If code passes but the explanation does not, keep the card in `review` and create a focused trace, modification, or debugging exercise. If the explanation is sound but the code fails, return it for repair. Do not average the two dimensions into a passing score.
+If code passes but the explanation does not, keep the card in `review` and create a focused trace, modification, or debugging exercise. If the explanation is sound but a required code check fails or is `not_run`, return it for repair or verification and keep the unproven limitation visible. Do not average the two dimensions into a passing score.
+
+Evidence remains a historical observation even when the repository changes. If a later change materially affects an evidence record's behavior, path, contract, configuration, test, or other input, preserve the record and mark its validity `needs_recheck`. Add the recheck as a new observation rather than overwriting the original. Do not invalidate evidence whose applicable scope was unaffected.
 
 ## Adapt the route
 

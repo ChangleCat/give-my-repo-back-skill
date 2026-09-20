@@ -55,15 +55,25 @@ Use the repository's existing response-body convention. Do not turn every except
 
 ## Validation
 
-- The new test fails on the old implementation for the expected reason and passes on your change.
-- The existing-task test still passes without weakening its assertions.
-- Inspect whether your change could misclassify an unexpected service failure.
+Record every check as `pass`, `fail`, or `not_run`. A `not_run` result does not prove that the code is correct.
+
+| Check | What it proves | Result | Limits |
+| --- | --- | --- | --- |
+| The new test fails on the old implementation for the expected reason and passes on your change. | The regression is reproduced and fixed. | `not_run` | Complete after running. |
+| The existing-task test still passes without weakening its assertions. | Existing success behavior is preserved. | `not_run` | Complete after running. |
+| Inspect whether the change could misclassify an unexpected service failure. | Unexpected failures remain distinguishable from missing records. | `not_run` | Record the inspected path and conclusion. |
 
 Use the test command documented by the actual project; no executable command is assumed by this fictional example.
 
 ## Evidence to bring back
 
-Bring the diff, before/after test output, and a short route-to-service trace. Explain why your edit belongs at the selected boundary.
+- Repository revision or other stable artifact identity.
+- A non-secret summary of relevant working-tree changes.
+- Applicable scope: the `GET /tasks/:id` missing-task and existing-task paths.
+- The diff, before/after test output, and a short route-to-service trace.
+- Why your edit belongs at the selected boundary.
+
+If a later change materially affects this route, its response contract, or the tests used here, preserve this evidence and mark it `needs_recheck`. Do not invalidate it for unrelated repository changes.
 
 ## Understanding gate
 

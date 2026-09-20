@@ -67,6 +67,7 @@ When learning documents are being saved, use a focused file such as `docs/repo-o
 - Repository revision: `<commit or other stable revision>`
 - Working tree state: `<clean, or a non-secret summary of relevant local changes>`
 - Evidence checked at: `<date or session>`
+- Evidence validity: `current` or `needs_recheck`
 - Target behavior: <one observable journey>
 - Scope: <included vertical slice and deliberate exclusions>
 
@@ -116,6 +117,7 @@ Check the model, not its artistic quality:
 - **Boundary semantics:** Does each important edge name a meaningful action and what crosses the boundary instead of saying only `uses` or `depends on`?
 - **State:** Are creation, transformation, ownership, persistence, and external effects visible where relevant?
 - **Evidence:** Does each cited location prove the adjacent claim? Are inference and uncertainty labeled honestly?
+- **Currency:** Does the recorded repository revision still match the map's applicable path and inputs? If a material change affects them, has the previous map been preserved and marked `needs_recheck`?
 - **Failure:** Can the person identify where one realistic failure would surface and how they would investigate it?
 - **Ownership:** Can the person revise and explain the map without receiving a completed replacement from the agent?
 

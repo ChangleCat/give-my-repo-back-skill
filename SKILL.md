@@ -132,6 +132,8 @@ For each active card:
 6. **Close or adapt** — Close only when both the repository result and the understanding gate pass. Otherwise give targeted feedback, revise the card, or add a prerequisite card.
 7. **Update the ledger** — Record demonstrated capabilities, unresolved gaps, AI-taken work, and the next active card.
 
+For every verification check, record `pass`, `fail`, or `not_run`. A `not_run` check does not support a claim that the code is correct, even when the reason for not running it is documented. Evidence used to close a card must identify the repository revision or other stable artifact identity, summarize relevant working-tree changes, and state the exact behavior, path, or subsystem to which the evidence applies.
+
 Read [references/coaching-and-review.md](references/coaching-and-review.md) when the person is working through a card, asks for help, submits work, or wants interview practice.
 
 ## Use graduated help
@@ -159,11 +161,13 @@ Use evidence local to the target area. The person should increasingly be able to
 - justify the chosen design and name a credible alternative;
 - explain tradeoffs and failure modes in interview-ready language.
 
+Keep the historical result separate from whether it still applies to the current repository. When a later change materially affects the path, contract, configuration, test, or other input on which recorded evidence depends, preserve the original evidence and mark its validity `needs_recheck`. Recheck only the affected evidence; unrelated repository changes do not invalidate it. Add the new observation alongside the old one so the learning history remains visible.
+
 Do not claim that the entire repository has been reclaimed after one subsystem. Report the demonstrated ownership boundary precisely, along with remaining unknowns and learning debt.
 
 ## Finish with a handoff
 
-On resuming a session, read the existing brief, requirements, roadmap, ledger, current card, and any system map relevant to that card before assigning new work. Check the current repository state against the recorded evidence and map revision. Preserve card IDs, prediction drafts, and human notes; do not regenerate completed work or treat an old `complete` status as proof that the repository has not changed. Record the active or review card, submitted evidence, unresolved blockers, next human action, and output language so another harness can continue from the same Markdown files.
+On resuming a session, read the existing brief, requirements, roadmap, ledger, current card, and any system map relevant to that card before assigning new work. Check the current repository state against each evidence record's revision and applicable scope. Preserve card IDs, prediction drafts, human notes, and historical evidence; do not regenerate completed work or treat an old `complete` status as proof that the evidence still applies. Mark materially affected evidence `needs_recheck`, leave unrelated evidence unchanged, and record the active or review card, submitted evidence, unresolved blockers, next human action, and output language so another harness can continue from the same Markdown files.
 
 When the route or requested session ends, give the person:
 

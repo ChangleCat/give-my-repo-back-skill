@@ -128,7 +128,7 @@ If you load the skill without a detailed request, the agent should proactively o
 2. **Read the brief and requirement.** Understand the current behavior, intended outcome, and open decisions.
 3. **Take one card.** Predict what will happen and form a plan before editing.
 4. **Do the work.** Inspect, implement, and validate; request a hint when needed.
-5. **Bring evidence.** Submit your diff, output, trace, or observations.
+5. **Bring evidence.** Submit your diff, output, trace, or observations with the repository revision and applicable scope. Checks are recorded as `pass`, `fail`, or `not_run`; `not_run` does not prove that the code is correct.
 6. **Explain it.** Defend the flow, decision, and a failure mode or alternative.
 7. **Continue.** The agent records evidence and adapts the next card.
 
@@ -154,7 +154,7 @@ docs/repo-ownership/
     └── GMRB-001.md
 ```
 
-These ordinary Markdown files carry progress between sessions and harnesses. Ask a new agent to load the skill and resume from this directory. It should check repository changes, reuse existing IDs and notes, and continue from the recorded next action. Discussion-only sessions can keep artifacts in the conversation.
+These ordinary Markdown files carry progress between sessions and harnesses. Ask a new agent to load the skill and resume from this directory. It should check repository changes, reuse existing IDs and notes, and continue from the recorded next action. Evidence remains part of the learning history, but a material change to the behavior or inputs it covered changes its validity from `current` to `needs_recheck`; unrelated changes leave it alone. Discussion-only sessions can keep artifacts in the conversation.
 
 The optional `maps/` directory is created only when a system-map card benefits from a persistent artifact. A small session does not need it.
 
